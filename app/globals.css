@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/*
+ * Llarie Salinas Portfolio — design tokens.
+ * Source of truth: Design System artifact, project/tokens.json.
+ * Default Tailwind palettes/scales are cleared so only these values exist.
+ */
+@theme {
+  /* ---- Color (tokens.json → color) ---- */
+  --color-*: initial;
+  --color-cream: #f6f1e6;
+  --color-ink: #221e1b;
+  --color-pink: #fbc7d9;
+  --color-pink-deep: #f4a6c2;
+  --color-blush: #fbe6ec;
+  --color-blush2: #f4c9d6;
+
+  /* ---- Spacing (tokens.json → spacing): p-1 = space-1 … p-7 = space-7 ---- */
+  --spacing-*: initial;
+  --spacing: initial;
+  --spacing-0: 0px;
+  --spacing-1: 8px;
+  --spacing-2: 14px;
+  --spacing-3: 22px;
+  --spacing-4: 32px;
+  --spacing-5: 40px;
+  --spacing-6: 70px;
+  --spacing-7: 110px;
+
+  /* ---- Radius (tokens.json → radius) ---- */
+  --radius-*: initial;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Type scale (tokens.json → type.groups) ---- */
+  --text-*: initial;
+  --text-display-hero: 84px;
+  --text-display-hero--line-height: 0.98;
+  --text-display-hero--font-weight: 700;
+  --text-display-h2: 52px;
+  --text-display-h2--line-height: 1.05;
+  --text-display-h2--font-weight: 700;
+  --text-display-h3: 44px;
+  --text-display-h3--line-height: 1.1;
+  --text-display-h3--font-weight: 700;
+  --text-display-stat: 46px;
+  --text-display-stat--line-height: 1;
+  --text-display-stat--font-weight: 700;
+  --text-body-lg: 19px;
+  --text-body-lg--line-height: 1.55;
+  --text-body-lg--font-weight: 400;
+  --text-body-md: 18px;
+  --text-body-md--line-height: 1.7;
+  --text-body-md--font-weight: 400;
+  --text-body-label: 15px;
+  --text-body-label--line-height: 1.3;
+  --text-body-label--font-weight: 700;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.4;
+  --text-body-sm--font-weight: 600;
+  --text-body-eyebrow: 13px;
+  --text-body-eyebrow--line-height: 1.3;
+  --text-body-eyebrow--font-weight: 700;
+  --text-hand-accent: 34px;
+  --text-hand-accent--line-height: 1;
+  --text-hand-accent--font-weight: 600;
+
+  /*
+   * Mock-derived effects (not in tokens.json; values copied from
+   * Main.dc.html / Mobile.dc.html). Hard offset shadows are the system's
+   * "collage" device — never soft blurs.
+   */
+  --shadow-*: initial;
+  --shadow-btn: 6px 6px 0 var(--color-pink);
+  --shadow-btn-pressed: 3px 3px 0 var(--color-pink);
+  --shadow-btn-sm: 5px 5px 0 var(--color-pink);
+  --shadow-btn-on-dark: 6px 6px 0 var(--color-cream);
+  --shadow-frame: 12px 12px 0 var(--color-pink);
+  --shadow-frame-left: -12px 12px 0 var(--color-pink);
+  --shadow-frame-sm: 8px 8px 0 var(--color-pink);
+
+  --text-shadow-*: initial;
+  --text-shadow-collage: 6px 6px 0 var(--color-pink);
+  --text-shadow-collage-sm: 4px 4px 0 var(--color-pink);
+  --text-shadow-ink: 2px 2px 0 var(--color-ink);
+}
+
+/* Font families point at the next/font CSS variables set in app/layout.tsx. */
+@theme inline {
+  --font-*: initial;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-eb-garamond), Georgia, serif;
+  --font-hand: var(--font-caveat), cursive;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

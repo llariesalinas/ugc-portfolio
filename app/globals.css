@@ -96,6 +96,32 @@
 }
 
 @layer base {
+  :root {
+    /* Sticky header height; keeps anchored sections clear of it. */
+    --header-h: 68px;
+  }
+
+  @media (width >= 64rem) {
+    :root {
+      --header-h: 59px;
+    }
+  }
+
+  html {
+    scroll-padding-top: var(--header-h);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
   body {
     background-color: var(--color-cream);
     color: var(--color-ink);

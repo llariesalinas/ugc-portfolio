@@ -1,24 +1,31 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cx } from "@/lib/cx";
 
-// Shared folder-tab shape: blush2 fill, ink outline, open bottom edge.
-const TAB_BASE = "bg-blush2 border-ink border-b-0 rounded-t-sm";
+// Shared folder-tab shape: blush2 fill (Folder only), ink outline, open bottom edge.
+const TAB_BASE = "border-ink border-b-0 rounded-t-sm";
 
-type NavTabProps = ComponentPropsWithoutRef<"a">;
+type NavTabProps = ComponentPropsWithoutRef<"a"> & {
+  /** Whether this tab's section is the one currently in view. */
+  isActive?: boolean;
+};
 
 /**
  * A nav link drawn as a folder tab sitting on the header's bottom border.
- * Alternates blush2/cream by position; lifts and turns pink on hover.
+ * Cream by default, pink when its section is active; lifts, gains a hard
+ * offset shadow, and turns pink on hover for a bit of tactile depth.
  */
-export function NavTab({ className, ...props }: NavTabProps) {
+export function NavTab({ className, isActive, ...props }: NavTabProps) {
   return (
     <a
       {...props}
+      aria-current={isActive ? "true" : undefined}
       className={cx(
         TAB_BASE,
         "relative mb-[-2.5px] translate-y-[5px] border-2 px-[18px] pt-[10px] pb-[9px]",
-        "transition-[translate,background-color] duration-150 ease-[ease] even:bg-cream",
-        "hover:translate-y-0 hover:bg-pink focus-visible:translate-y-0 focus-visible:bg-pink",
+        "transition-[translate,background-color,box-shadow] duration-200 ease-[ease]",
+        "hover:-translate-y-[2px] hover:bg-pink hover:shadow-btn-tab",
+        "focus-visible:-translate-y-[2px] focus-visible:bg-pink focus-visible:shadow-btn-tab",
+        isActive ? "-translate-y-[2px] bg-pink shadow-btn-tab" : "bg-cream",
         className,
       )}
     />

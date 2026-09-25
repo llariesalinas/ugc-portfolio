@@ -15,6 +15,7 @@ const NAV_LINKS = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("#home");
 
   // Close on Escape, and when the viewport grows past the hamburger breakpoint.
   useEffect(() => {
@@ -30,6 +31,53 @@ export function Header() {
     };
   }, [open]);
 
+  // Scrollspy: the active section is the last one (in document order) whose
+  // top has scrolled up past the header line — i.e. the one most recently
+  // entered. Checked on scroll/resize rather than via IntersectionObserver,
+  // since a naive "topmost intersecting" pick mis-highlights the section
+  // just above once it starts leaving on the far side of a short section.
+  useEffect(() => {
+    const sections = NAV_LINKS.map((link) => document.getElementById(link.href.slice(1))).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (sections.length === 0) return;
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+
+      // At the bottom of the page the last section's top can never reach
+      // the header line — there's no content below it left to scroll past.
+      // Treat "scrolled to the bottom" as that last section being active.
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        setActive(`#${sections[sections.length - 1].id}`);
+        return;
+      }
+
+      const headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 0;
+      const line = headerH + 1;
+      let current = sections[0];
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= line) current = el;
+      }
+      setActive(`#${current.id}`);
+    };
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   return (
     <header className="sticky top-0 z-20 border-b-[2.5px] border-ink bg-cream">
       <a
@@ -42,7 +90,7 @@ export function Header() {
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-[20px] py-[18px] lg:items-end lg:px-5 lg:pb-0">
         <a
           href="#home"
-          className="font-display text-[20px] leading-normal font-bold italic lg:text-[26px]"
+          className="inline-block font-display text-[20px] leading-normal font-bold italic transition-transform duration-200 hover:-rotate-2 hover:scale-105 lg:text-[26px]"
         >
           Llarie
         </a>
@@ -53,7 +101,7 @@ export function Header() {
           className="hidden items-end gap-[6px] text-body-eyebrow font-semibold tracking-[.04em] uppercase lg:flex"
         >
           {NAV_LINKS.map((link) => (
-            <NavTab key={link.href} href={link.href}>
+            <NavTab key={link.href} href={link.href} isActive={active === link.href}>
               {link.label}
             </NavTab>
           ))}
@@ -101,21 +149,27 @@ export function Header() {
           className="absolute inset-x-0 top-full border-b-[2.5px] border-ink bg-cream px-[20px] pt-2 pb-3"
         >
           <ul className="mx-auto flex max-w-[480px] flex-col gap-1">
-            {NAV_LINKS.map((link, i) => (
-              <li key={link.href} style={{ rotate: `${i % 2 ? 0.6 : -0.6}deg` }}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={cx(
-                    "block rounded-sm border-2 border-ink px-2 py-[12px] text-body-label tracking-[.04em] uppercase transition-colors duration-150",
-                    "hover:bg-pink focus-visible:bg-pink",
-                    i % 2 ? "bg-cream" : "bg-blush2",
-                  )}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map((link, i) => {
+              const isActive = active === link.href;
+              return (
+                <li key={link.href} style={{ rotate: `${i % 2 ? 0.6 : -0.6}deg` }}>
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? "true" : undefined}
+                    onClick={() => setOpen(false)}
+                    className={cx(
+                      "block rounded-sm border-2 border-ink px-2 py-[12px] text-body-label tracking-[.04em] uppercase",
+                      "transition-[background-color,translate,box-shadow] duration-200",
+                      "hover:-translate-y-px hover:bg-pink hover:shadow-btn-tab",
+                      "focus-visible:-translate-y-px focus-visible:bg-pink focus-visible:shadow-btn-tab",
+                      isActive ? "-translate-y-px bg-pink shadow-btn-tab" : "bg-cream",
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>

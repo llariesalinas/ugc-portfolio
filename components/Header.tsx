@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { NavTab } from "@/components/scrapbook/FolderTab";
 import { cx } from "@/lib/cx";
 
-export const NAV_LINKS = [
+const NAV_LINKS = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#stats", label: "Stats" },

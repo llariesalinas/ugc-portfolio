@@ -1,10 +1,10 @@
 import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
 import { cx } from "@/lib/cx";
 
 // Placeholder sections so the nav anchors can be tested. Each one is
-// replaced by its real component in phases 3–8.
+// replaced by its real component in phases 4–8.
 const STUBS = [
-  { id: "home", label: "Hero", phase: 3, className: "bg-cream" },
   { id: "about", label: "About", phase: 4, className: "bg-blush" },
   { id: "stats", label: "Stats", phase: 5, className: "bg-cream" },
   { id: "samples", label: "Samples", phase: 6, className: "bg-blush" },
@@ -17,6 +17,7 @@ export default function Home() {
     <>
       <Header />
       <main id="main">
+        <Hero />
         {STUBS.map((s) => (
           <section
             key={s.id}

@@ -1,11 +1,11 @@
+import { About } from "@/components/About";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { cx } from "@/lib/cx";
 
 // Placeholder sections so the nav anchors can be tested. Each one is
-// replaced by its real component in phases 4–8.
+// replaced by its real component in phases 5–8.
 const STUBS = [
-  { id: "about", label: "About", phase: 4, className: "bg-blush" },
   { id: "stats", label: "Stats", phase: 5, className: "bg-cream" },
   { id: "samples", label: "Samples", phase: 6, className: "bg-blush" },
   { id: "brands", label: "Brands", phase: 7, className: "bg-cream" },
@@ -18,6 +18,7 @@ export default function Home() {
       <Header />
       <main id="main">
         <Hero />
+        <About />
         {STUBS.map((s) => (
           <section
             key={s.id}

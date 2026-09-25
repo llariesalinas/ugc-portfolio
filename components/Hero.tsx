@@ -25,7 +25,7 @@ const SOCIALS = [
     ),
   },
   {
-    href: "https://www.youtube.com/@llariesalinas",
+    href: "https://www.youtube.com/@llarie",
     label: "YouTube",
     path: (
       <>

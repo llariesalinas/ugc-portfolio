@@ -116,7 +116,8 @@ export function Hero() {
             alt="Llarie Salinas"
             fill
             sizes="(min-width: 1024px) 380px, 220px"
-            className="object-cover"
+            quality={95}
+            className="object-cover object-[50%_70%]"
             priority
           />
         </div>

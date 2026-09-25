@@ -50,6 +50,7 @@ export function About() {
               alt="Llarie Salinas portrait"
               fill
               sizes="(min-width: 1024px) 320px, 240px"
+              quality={95}
               className="object-cover"
             />
           </div>

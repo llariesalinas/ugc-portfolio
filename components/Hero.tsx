@@ -1,5 +1,9 @@
+import Image from "next/image";
 import { Pushpin } from "@/components/scrapbook/Pushpin";
 import { Tape } from "@/components/scrapbook/Tape";
+
+const HERO_PHOTO_URL =
+  "https://d5gzeazkxfhs83i9.public.blob.vercel-storage.com/hero-photo-QxCSQvgnTkKOQf3oH6cJTCf56FDvK2.jpg";
 
 // Real profile links; email routes through the Contact section's mailto.
 const SOCIALS = [
@@ -106,10 +110,15 @@ export function Hero() {
           hi, i&rsquo;m
         </span>
 
-        <div className="relative mx-auto flex h-[270px] w-[220px] rotate-0 items-center justify-center rounded-lg border-[3px] border-ink bg-blush2 shadow-frame-sm lg:mx-0 lg:ml-[40px] lg:h-[460px] lg:w-[380px] lg:-rotate-3 lg:shadow-frame">
-          <span className="px-[12px] text-center text-body-eyebrow tracking-[.08em] uppercase opacity-55">
-            [ your photo ]
-          </span>
+        <div className="relative mx-auto h-[270px] w-[220px] overflow-hidden rounded-lg border-[3px] border-ink bg-blush2 shadow-frame-sm lg:mx-0 lg:ml-[40px] lg:h-[460px] lg:w-[380px] lg:-rotate-3 lg:shadow-frame">
+          <Image
+            src={HERO_PHOTO_URL}
+            alt="Llarie Salinas"
+            fill
+            sizes="(min-width: 1024px) 380px, 220px"
+            className="object-cover"
+            priority
+          />
         </div>
       </div>
 

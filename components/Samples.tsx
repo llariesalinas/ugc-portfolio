@@ -1,11 +1,35 @@
 import { Pushpin } from "@/components/scrapbook/Pushpin";
 import { Tape } from "@/components/scrapbook/Tape";
 
+const BLOB = "https://d5gzeazkxfhs83i9.public.blob.vercel-storage.com";
+
 const CARDS = [
-  { caption: "GRWM · skincare", rotate: -2, deco: "tape" as const, decoRotate: -4 },
-  { caption: "Makeup look", rotate: 1.5, deco: "pin" as const },
-  { caption: "Product review", rotate: -1, deco: "tape" as const, decoRotate: -2 },
-  { caption: "GRWM · winter", rotate: 2, deco: "pin" as const },
+  {
+    caption: "Edna tote & flats",
+    src: `${BLOB}/sample-1.mp4`,
+    rotate: -2,
+    deco: "tape" as const,
+    decoRotate: -4,
+  },
+  {
+    caption: "G2G 3-in-1 sunscreen",
+    src: `${BLOB}/sample-2.mp4`,
+    rotate: 1.5,
+    deco: "pin" as const,
+  },
+  {
+    caption: "Skintific green cushion",
+    src: `${BLOB}/sample-3.mp4`,
+    rotate: -1,
+    deco: "tape" as const,
+    decoRotate: -2,
+  },
+  {
+    caption: "SACE LADY lip tint",
+    src: `${BLOB}/sample-4.mp4`,
+    rotate: 2,
+    deco: "pin" as const,
+  },
 ];
 
 export function Samples() {
@@ -34,11 +58,15 @@ export function Samples() {
               ) : (
                 <Pushpin centered />
               )}
-              <div className="flex aspect-[9/16] items-center justify-center rounded-[10px] bg-cream">
-                <span className="px-[10px] text-center text-body-eyebrow opacity-55">
-                  [ sample ]
-                </span>
-              </div>
+              <video
+                src={card.src}
+                className="aspect-[9/16] w-full rounded-[10px] bg-cream object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
               <div className="mt-[8px] text-body-sm font-normal italic opacity-75 lg:mt-[10px]">
                 {card.caption}
               </div>

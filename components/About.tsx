@@ -1,4 +1,8 @@
+import Image from "next/image";
 import { Pushpin } from "@/components/scrapbook/Pushpin";
+
+const ABOUT_PHOTO_URL =
+  "https://d5gzeazkxfhs83i9.public.blob.vercel-storage.com/about-portrait-KlHtTamLpxyM258Xwfhuwk3coiSNO4.jpg";
 
 export function About() {
   return (
@@ -40,10 +44,14 @@ export function About() {
 
         <div className="relative mx-auto">
           <Pushpin size="md" className="top-[-16px] left-[36px]" />
-          <div className="relative flex h-[300px] w-[240px] items-center justify-center rounded-lg border-[3px] border-ink bg-cream shadow-frame-left rotate-3 lg:h-[400px] lg:w-[320px]">
-            <span className="px-[12px] text-center text-body-eyebrow tracking-[.08em] uppercase opacity-55">
-              [ portrait photo ]
-            </span>
+          <div className="relative h-[300px] w-[240px] overflow-hidden rounded-lg border-[3px] border-ink bg-cream shadow-frame-left rotate-3 lg:h-[400px] lg:w-[320px]">
+            <Image
+              src={ABOUT_PHOTO_URL}
+              alt="Llarie Salinas portrait"
+              fill
+              sizes="(min-width: 1024px) 320px, 240px"
+              className="object-cover"
+            />
           </div>
           <div
             style={{ rotate: "8deg" }}

@@ -117,7 +117,7 @@ export function Hero() {
             fill
             sizes="(min-width: 1024px) 380px, 220px"
             quality={95}
-            className="object-cover object-[50%_70%]"
+            className="object-cover object-[50%_100%]"
             priority
           />
         </div>

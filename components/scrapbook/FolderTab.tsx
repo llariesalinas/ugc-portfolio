@@ -53,7 +53,7 @@ export function Folder({ label, rotate = 0, className, children }: FolderProps) 
       <div
         className={cx(
           TAB_BASE,
-          "absolute top-[-23px] left-[26px] border-[2.5px] px-[20px] pt-[7px] pb-[9px]",
+          "absolute top-[-32px] left-[26px] border-[2.5px] bg-pink px-[20px] pt-[7px] pb-[9px]",
           "font-display text-[17px] font-bold italic",
         )}
       >

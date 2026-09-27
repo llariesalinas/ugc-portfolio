@@ -25,7 +25,7 @@ export function Stats() {
             <div
               key={card.label}
               style={{ rotate: `${card.rotate}deg` }}
-              className="relative rounded-md border-[2.5px] border-ink bg-cream px-[22px] py-[28px] lg:px-[28px] lg:py-[36px]"
+              className="relative rounded-md border-[2.5px] border-ink bg-cream px-[22px] py-[28px] shadow-frame-sm transition-[translate,box-shadow] duration-200 hover:-translate-y-[6px] hover:shadow-frame lg:px-[28px] lg:py-[36px]"
             >
               <Pushpin centered />
               <div className="font-display text-[36px] font-bold text-pink text-shadow-ink lg:text-display-stat">

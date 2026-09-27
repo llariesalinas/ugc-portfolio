@@ -23,8 +23,7 @@ export function About() {
           <p className="mx-auto mb-[18px] max-w-[520px] text-body-sm leading-[1.6] opacity-85 lg:mx-0 lg:text-body-md lg:leading-[1.7]">
             21-year-old Filipina creator blending beauty, tech, and everyday chaos into content
             that Gen Z girls actually stop scrolling for. GRWMs, honest reviews, and the
-            occasional &ldquo;pov: you&rsquo;re starting an app&rdquo; — all shot between CS
-            classes.
+            occasional &ldquo;pov: you&rsquo;re starting an app&rdquo; — all shot between CS classes.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-[10px] lg:justify-start">
             <span
@@ -44,14 +43,14 @@ export function About() {
 
         <div className="relative mx-auto">
           <Pushpin size="md" className="top-[-16px] left-[36px]" />
-          <div className="relative h-[300px] w-[240px] overflow-hidden rounded-lg border-[3px] border-ink bg-cream shadow-frame-left rotate-3 lg:h-[400px] lg:w-[320px]">
+          <div className="group relative h-[300px] w-[240px] overflow-hidden rounded-lg border-[3px] border-ink bg-cream shadow-frame-left rotate-3 transition-[translate,rotate,box-shadow] duration-200 hover:-translate-y-[4px] hover:rotate-1 hover:shadow-frame lg:h-[400px] lg:w-[320px]">
             <Image
               src={ABOUT_PHOTO_URL}
               alt="Llarie Salinas portrait"
               fill
               sizes="(min-width: 1024px) 320px, 240px"
               quality={95}
-              className="object-cover"
+              className="object-cover transition-transform duration-200 group-hover:scale-105"
             />
           </div>
           <div

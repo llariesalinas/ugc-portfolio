@@ -105,19 +105,19 @@ export function Hero() {
         <span
           aria-hidden="true"
           style={{ rotate: "-7deg" }}
-          className="absolute -top-[6px] left-[60px] z-2 hidden font-hand text-[30px] lg:block"
+          className="absolute top-[64px] left-[130px] z-20 hidden font-hand text-[30px] text-pink text-shadow-ink lg:block"
         >
           hi, i&rsquo;m
         </span>
 
-        <div className="relative mx-auto h-[270px] w-[220px] overflow-hidden rounded-lg border-[3px] border-ink bg-blush2 shadow-frame-sm lg:mx-0 lg:ml-[40px] lg:h-[460px] lg:w-[380px] lg:-rotate-3 lg:shadow-frame">
+        <div className="group relative mx-auto h-[270px] w-[220px] overflow-hidden rounded-lg border-[3px] border-ink bg-blush2 shadow-frame-sm transition-[translate,rotate,box-shadow] duration-200 hover:-translate-y-[4px] hover:shadow-frame lg:mx-0 lg:ml-[40px] lg:h-[460px] lg:w-[380px] lg:-rotate-3 lg:shadow-frame lg:hover:-rotate-1">
           <Image
             src={HERO_PHOTO_URL}
             alt="Llarie Salinas"
             fill
             sizes="(min-width: 1024px) 380px, 220px"
             quality={95}
-            className="object-cover object-[50%_100%]"
+            className="object-cover object-[50%_100%] transition-transform duration-200 group-hover:scale-105"
             priority
           />
         </div>
@@ -160,8 +160,8 @@ export function Hero() {
             See My Work
           </a>
           <a
-            href="#contact"
-            className="block rounded-pill border-2 border-ink px-[28px] py-[13px] text-center font-body text-body-sm font-semibold tracking-[.02em] lg:py-[14px]"
+            href="mailto:llariesalinas@gmail.com?subject=Media%20Kit%20Request&body=Hi%20Llarie%2C%20I%27d%20love%20to%20get%20your%20media%20kit%20and%20rate%20card!"
+            className="block rounded-pill border-2 border-ink bg-cream px-[28px] py-[13px] text-center font-body text-body-sm font-semibold tracking-[.02em] shadow-btn-sm transition-[translate,box-shadow,background-color] duration-150 hover:-translate-y-[2px] hover:bg-pink hover:shadow-btn focus-visible:-translate-y-[2px] focus-visible:bg-pink lg:py-[14px]"
           >
             Request Media Kit
           </a>

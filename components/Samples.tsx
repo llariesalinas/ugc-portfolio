@@ -5,27 +5,27 @@ const BLOB = "https://d5gzeazkxfhs83i9.public.blob.vercel-storage.com";
 
 const CARDS = [
   {
-    caption: "Edna tote & flats",
+    caption: "Charles & Keith haul",
     src: `${BLOB}/sample-1.mp4`,
     rotate: -2,
     deco: "tape" as const,
     decoRotate: -4,
   },
   {
-    caption: "G2G 3-in-1 sunscreen",
+    caption: "Glad2Glow before & after",
     src: `${BLOB}/sample-2.mp4`,
     rotate: 1.5,
     deco: "pin" as const,
   },
   {
-    caption: "Skintific green cushion",
+    caption: "SKINTIFIC transition",
     src: `${BLOB}/sample-3.mp4`,
     rotate: -1,
     deco: "tape" as const,
     decoRotate: -2,
   },
   {
-    caption: "SACE LADY lip tint",
+    caption: "SACE LADY swatches",
     src: `${BLOB}/sample-4.mp4`,
     rotate: 2,
     deco: "pin" as const,

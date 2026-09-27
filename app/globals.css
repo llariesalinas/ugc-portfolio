@@ -80,6 +80,7 @@
   --shadow-frame: 12px 12px 0 var(--color-pink);
   --shadow-frame-left: -12px 12px 0 var(--color-pink);
   --shadow-frame-sm: 8px 8px 0 var(--color-pink);
+  --shadow-btn-tab: 3px 3px 0 var(--color-ink);
 
   --text-shadow-*: initial;
   --text-shadow-collage: 6px 6px 0 var(--color-pink);
